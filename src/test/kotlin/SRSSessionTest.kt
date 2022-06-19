@@ -50,4 +50,10 @@ internal class SRSSessionTest {
         val image = session.getLetterGradeStatistics(Semester("2021", SemesterType.Spring), Course("CS", "202"))
         println(image)
     }
+
+    @Test
+    fun getWeeklySchedule() = runBlocking {
+        val schedule = session.getWeeklySchedule()
+        println(jsonFmt.encodeToString(schedule))
+    }
 }

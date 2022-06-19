@@ -42,4 +42,6 @@ class SRSSession(private val cookie: String) {
 
     suspend fun getLetterGradeStatistics(semester: Semester, course: Course) =
         getLetterGradeStatistics(cookie, semester, course)
+
+    suspend fun getWeeklySchedule() = getWeeklySchedule(cookie)
 }

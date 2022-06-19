@@ -30,6 +30,7 @@ enum class LetterGrade(val representation: String) {
 
     companion object {
         private val map = values().associateBy(LetterGrade::representation)
+        @JvmStatic
         fun from(representation: String) = map[representation] ?: Unknown
     }
 }
