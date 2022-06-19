@@ -47,4 +47,6 @@ class SRSSession(private val cookie: String) {
 
     suspend fun getSemesterCourses(semester: Semester? = null) =
         if (semester == null) getCurrentSemesterCourses(cookie) else getSemesterCourses(cookie, semester)
+
+    suspend fun getTranscript() = getTranscript(cookie)
 }

@@ -62,10 +62,16 @@ internal class SRSSessionTest {
         val schedule = session.getWeeklySchedule()
         println(jsonFmt.encodeToString(schedule))
     }
+
     @Test
     fun getSemesterCourses() = runBlocking {
         val semester = session.getSemesterCourses(Semester("2021", SemesterType.Spring))
         println(jsonFmt.encodeToString(semester))
     }
 
+    @Test
+    fun getTranscript() = runBlocking {
+        val transcript = session.getTranscript()
+        println(jsonFmt.encodeToString(transcript))
+    }
 }
