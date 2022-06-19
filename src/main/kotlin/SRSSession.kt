@@ -31,6 +31,15 @@ class SRSSession(private val cookie: String) {
     suspend fun getAttendance(semester: Semester? = null, course: CourseSection? = null) =
         getAttendance(cookie, semester, course)
 
+    suspend fun calculateGPA(courseData: List<CGPACalculationRequestData>) = calculateGPA(cookie, courseData)
+
+    suspend fun getCurriculum() = getCurriculum(cookie)
+
+    suspend fun getExams() = getExams(cookie)
+
+    suspend fun getGrades(semester: Semester? = null, course: CourseSection? = null) =
+        getGrades(cookie, semester, course)
+
     suspend fun getLetterGradeStatistics(semester: Semester, course: Course) =
         getLetterGradeStatistics(cookie, semester, course)
 }
