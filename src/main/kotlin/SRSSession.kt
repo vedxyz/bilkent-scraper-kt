@@ -1,6 +1,4 @@
-import authentication.getVerificationCode
-import authentication.initializeLogin
-import authentication.verifyEmail
+import authentication.*
 import data.*
 
 data class ManualVerificationIntermediary(
@@ -44,4 +42,7 @@ class SRSSession(private val cookie: String) {
         getLetterGradeStatistics(cookie, semester, course)
 
     suspend fun getWeeklySchedule() = getWeeklySchedule(cookie)
+
+    suspend fun getSemesterCourses(semester: Semester? = null) =
+        if (semester == null) getCurrentSemesterCourses(cookie) else getSemesterCourses(cookie, semester)
 }
