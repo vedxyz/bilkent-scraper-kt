@@ -46,6 +46,12 @@ internal class SRSSessionTest {
     }
 
     @Test
+    fun getInformationCard() = runBlocking {
+        val informationCard = session.getInformationCard()
+        println(jsonFmt.encodeToString(informationCard))
+    }
+
+    @Test
     fun getLetterGradeStatistics() = runBlocking {
         val image = session.getLetterGradeStatistics(Semester("2021", SemesterType.Spring), Course("CS", "202"))
         println(image)

@@ -38,6 +38,8 @@ class SRSSession(private val cookie: String) {
     suspend fun getGrades(semester: Semester? = null, course: CourseSection? = null) =
         getGrades(cookie, semester, course)
 
+    suspend fun getInformationCard() = getInformationCard(cookie)
+
     suspend fun getLetterGradeStatistics(semester: Semester, course: Course) =
         getLetterGradeStatistics(cookie, semester, course)
 
