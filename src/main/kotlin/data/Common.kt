@@ -25,5 +25,11 @@ enum class LetterGrade(val representation: String) {
     CMinus("C-"),
     DPlus("D+"),
     D("D"),
-    F("F")
+    F("F"),
+    Unknown("Unknown");
+
+    companion object {
+        private val map = values().associateBy(LetterGrade::representation)
+        fun from(representation: String) = map[representation] ?: Unknown
+    }
 }
