@@ -42,8 +42,10 @@ internal object OkHttpSingleton {
 
     private const val LOGGED_OUT_RESPONSE = "You are logged out from SRS"
 
-    suspend fun guardedFetch(url: String, cookie: String): String {
-        fetch(url, HttpMethods.GET, Headers.headersOf("Cookie", cookie)).use {
+    suspend fun guardedFetch(url: String, cookie: String, body: RequestBody? = null): String {
+        fetch(
+            url, if (body == null) HttpMethods.GET else HttpMethods.POST, Headers.headersOf("Cookie", cookie), body
+        ).use {
             val content = it.body!!.string()
             if (content.startsWith(LOGGED_OUT_RESPONSE)) throw Exception("Unauthenticated request, cookie may be invalid")
             return content
