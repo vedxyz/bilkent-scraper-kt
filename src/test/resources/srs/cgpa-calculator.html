@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!--<link rel="stylesheet" href="assets/bootstrap/bootstrap.css" media="screen">-->
+    <link rel="stylesheet" href="/srs-v2/themes/united/css/bootstrap.css" media="screen" />
+    <link rel="stylesheet" href="/srs-v2/assets/toastr/toastr.css" media="screen" />
+    <link rel="stylesheet" href="/srs-v2/assets/jquery-ui/themes/smoothness/jquery-ui.min.css" media="screen" />
+
+    <link rel="stylesheet" href="/srs-v2/assets/my/application.css" media="screen" />
+    <link rel="icon" href="/srs-v2/favicon.ico" type="image/x-icon" />
+    <!-- BEGIN Manually Loaded Styles -->
+    <!-- END Manually Loaded Styles -->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="/srs-v2/assets/html5shiv.min.js"></script>
+      <script src="/srs-v2/assets/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="/srs-v2/assets/jquery/jquery.min.js"></script>
+
+    <script src="/srs-v2/assets/bootstrap/bootstrap.js"></script>
+    <script src="/srs-v2/assets/toastr/toastr.js"></script>
+    <script src="/srs-v2/assets/popconfirm/popconfirm.js"></script>
+    <script src="/srs-v2/assets/jquery-ui/jquery-ui.min.js"></script>
+
+    <link href="/srs-v2/assets/x-editable/css/bootstrap-editable.css" rel="stylesheet" />
+    <script src="/srs-v2/assets/x-editable/js/bootstrap-editable.min.js"></script>
+
+    <script src="/srs-v2/assets/microplugin/js/microplugin.js"></script>
+    <script src="/srs-v2/assets/sifter/sifter.js"></script>
+
+    <link href="/srs-v2/assets/selectize/css/selectize.bootstrap3.css" rel="stylesheet" />
+    <script src="/srs-v2/assets/selectize/js/selectize.js"></script>
+
+    <!-- BEGIN Manually Loaded JS -->
+    <!-- END Manually Loaded JS -->
+
+    <script src="/srs-v2/assets/my/application.js"></script>
+  </head>
+  <body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button
+            type="button"
+            class="navbar-toggle collapsed"
+            data-toggle="collapse"
+            data-target="#bs-example-navbar-collapse-1"
+          >
+            <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span>
+            <span class="icon-bar"></span> <span class="icon-bar"></span>
+          </button>
+
+          <a class="navbar-brand" href="/srs-v2/">SRS<sup style="color: aliceblue">v2</sup> </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li><a href="/srs/">Home</a></li>
+            <!-- <li><a href="/srs-v2/moodle">Moodle</a></li> -->
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <!--<li><a href="#">Feedback <span class="glyphicon glyphicon-send"></span></a></li>-->
+            <li>
+              <a href="/srs/"><u>Return to SRS Page / SRS sayfasına geri dön</u></a>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                <img
+                  class="img-rounded"
+                  style="width: auto; height: 25px"
+                  src="/webserv/image.php?cry=536a0af4a0317cf1b097a9c995d22c87&id=22001234" />
+                William John (22001234) <span class="caret"></span
+              ></a>
+              <ul class="dropdown-menu" role="menu">
+                <!--
+                            <li><a href="#">Profile</a></li>
+                            <li><a href="#">Update Information</a></li>
+                            -->
+                <li class="divider"></li>
+                <li><a href="/srs-v2/user/logout/">Logout</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+      </div>
+      <!-- /.container-fluid -->
+    </nav>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="page-header">
+            <h3><strong>CGPA Calculator</strong> &raquo; 2021-2022 Spring</h3>
+          </div>
+        </div>
+      </div>
+      <!-- FLASH MESSAGES STARTS -->
+      <!-- FLASH MESSAGES ENDS -->
+
+      <div class="row">
+        <div class="col-lg-12">
+          <!-- CONTENT STARTS -->
+          <style>
+            .table-user-information > tbody > tr {
+              border-top: 1px solid rgb(221, 221, 221);
+            }
+
+            .table-user-information > tbody > tr:first-child {
+              border-top: 0;
+            }
+
+            .table-user-information > tbody > tr > td {
+              border-top: 0;
+              margin: 0;
+              padding: 2px;
+            }
+          </style>
+
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-md-2 col-xs-4" align="center">
+                  <img
+                    alt="William John Smith (22001234)"
+                    src="/webserv/image.php?cry=536a0af4a0317cf1b097a9c995d22c87&id=22001234"
+                    class="img-thumbnail img-responsive"
+                    style="height: 120px"
+                  />
+                </div>
+                <div class="col-md-10 col-xs-8">
+                  <table class="table table-user-information">
+                    <tbody>
+                      <tr>
+                        <td class="col-md-3">Bilkent ID:</td>
+                        <td>22001234</td>
+                      </tr>
+                      <tr>
+                        <td>Name:</td>
+                        <td>William John Smith</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel panel-default">
+            <div class="panel-heading bg-info">
+              <h3>Expected Academic Standing</h3>
+            </div>
+
+            <div class="panel-body">
+              <table class="table table-hover table-striped">
+                <thead>
+                  <tr>
+                    <th>GPA</th>
+                    <th>CGPA</th>
+                    <th>Standing</th>
+                    <th class="text-center">Semester Totals (Credits)</th>
+                    <th class="text-center">Previous Totals (Credits)</th>
+                    <th class="text-center">Semester Totals (Points)</th>
+                    <th class="text-center">Previous Totals (Points)</th>
+                    <th class="text-center">Grand Totals (Credits)</th>
+                    <th class="text-center">Grand Totals (Points)</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <tr>
+                    <td class="text-center">3.60</td>
+                    <td class="text-center">3.54</td>
+                    <td class="text-center" nowrap="nowrap">HIGH HONOUR</td>
+                    <td class="text-center">22.00</td>
+                    <td class="text-center">58.00</td>
+                    <td class="text-center">79.20</td>
+                    <td class="text-center">204.00</td>
+                    <td class="text-center">80.00</td>
+                    <td class="text-center">283.20</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3>Courses Taken in 2021-2022 Spring Semester</h3>
+            </div>
+
+            <div class="panel-body">
+              <form method="post" action="/srs-v2/tools/cgpa-calculator">
+                <table class="table table-hover table-striped">
+                  <thead>
+                    <tr>
+                      <th>Course</th>
+                      <th>Course Name</th>
+                      <th>Instructor(s)</th>
+                      <th class="text-center">Credits (Bilkent)</th>
+                      <th class="text-center">Credits (ECTS)</th>
+                      <th class="text-center">Expected Grade</th>
+                      <th class="text-center">Quality Points</th>
+                      <th class="text-center">Product</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <tr>
+                      <td>CS 202 - 001</td>
+                      <td>Fundamental Structures of Computer Science II</td>
+                      <td>Lecturer Aynur Dayanık</td>
+                      <td class="text-center">3</td>
+                      <td class="text-center">5</td>
+
+                      <td class="text-center">
+                        <select
+                          name="courses[CS_202_1]"
+                          id="course_CS_202_1"
+                          data-row="0"
+                          data-course="CS_202_1"
+                          data-credits="3"
+                          class="form-control courseGradesSelectBox"
+                          required="required"
+                        >
+                          <option value="">--Select--</option>
+                          <option data-conversion="4" value="A">A</option>
+                          <option data-conversion="3.7" value="A-">A-</option>
+                          <option data-conversion="3.3" value="B+">B+</option>
+                          <option data-conversion="3" value="B">B</option>
+                          <option data-conversion="2.7" value="B-">B-</option>
+                          <option data-conversion="2.3" value="C+">C+</option>
+                          <option data-conversion="2" value="C" selected="selected">C</option>
+                          <option data-conversion="1.7" value="C-">C-</option>
+                          <option data-conversion="1.3" value="D+">D+</option>
+                          <option data-conversion="1" value="D">D</option>
+                          <option data-conversion="0" value="F">F</option>
+                        </select>
+                      </td>
+                      <td id="factor0" class="factors text-center" data-default-value="2.00">2.00</td>
+                      <td id="points0" class="points text-center" data-default-value="6.00">6.00</td>
+                    </tr>
+
+                    <tr>
+                      <td>CS 224 - 001</td>
+                      <td>Computer Organization</td>
+                      <td>Vis. Prof. Fazlı Can</td>
+                      <td class="text-center">4</td>
+                      <td class="text-center">6,5</td>
+
+                      <td class="text-center">
+                        <select
+                          name="courses[CS_224_1]"
+                          id="course_CS_224_1"
+                          data-row="1"
+                          data-course="CS_224_1"
+                          data-credits="4"
+                          class="form-control courseGradesSelectBox"
+                          required="required"
+                        >
+                          <option value="">--Select--</option>
+                          <option data-conversion="4" value="A" selected="selected">A</option>
+                          <option data-conversion="3.7" value="A-">A-</option>
+                          <option data-conversion="3.3" value="B+">B+</option>
+                          <option data-conversion="3" value="B">B</option>
+                          <option data-conversion="2.7" value="B-">B-</option>
+                          <option data-conversion="2.3" value="C+">C+</option>
+                          <option data-conversion="2" value="C">C</option>
+                          <option data-conversion="1.7" value="C-">C-</option>
+                          <option data-conversion="1.3" value="D+">D+</option>
+                          <option data-conversion="1" value="D">D</option>
+                          <option data-conversion="0" value="F">F</option>
+                        </select>
+                      </td>
+                      <td id="factor1" class="factors text-center" data-default-value="4.00">4.00</td>
+                      <td id="points1" class="points text-center" data-default-value="16.00">16.00</td>
+                    </tr>
+
+                    <tr>
+                      <td>CS 319 - 001</td>
+                      <td>Object-Oriented Software Engineering</td>
+                      <td>Asst. Prof. of Practice Eray Tüzün</td>
+                      <td class="text-center">4</td>
+                      <td class="text-center">6,5</td>
+
+                      <td class="text-center">
+                        <select
+                          name="courses[CS_319_1]"
+                          id="course_CS_319_1"
+                          data-row="2"
+                          data-course="CS_319_1"
+                          data-credits="4"
+                          class="form-control courseGradesSelectBox"
+                          required="required"
+                        >
+                          <option value="">--Select--</option>
+                          <option data-conversion="4" value="A">A</option>
+                          <option data-conversion="3.7" value="A-">A-</option>
+                          <option data-conversion="3.3" value="B+" selected="selected">B+</option>
+                          <option data-conversion="3" value="B">B</option>
+                          <option data-conversion="2.7" value="B-">B-</option>
+                          <option data-conversion="2.3" value="C+">C+</option>
+                          <option data-conversion="2" value="C">C</option>
+                          <option data-conversion="1.7" value="C-">C-</option>
+                          <option data-conversion="1.3" value="D+">D+</option>
+                          <option data-conversion="1" value="D">D</option>
+                          <option data-conversion="0" value="F">F</option>
+                        </select>
+                      </td>
+                      <td id="factor2" class="factors text-center" data-default-value="3.30">3.30</td>
+                      <td id="points2" class="points text-center" data-default-value="13.20">13.20</td>
+                    </tr>
+
+                    <tr>
+                      <td>ENG 401 - 018</td>
+                      <td>Technical Report Writing and Presentation</td>
+                      <td>Instructor Marlene Denice Elwell</td>
+                      <td class="text-center">3</td>
+                      <td class="text-center">5</td>
+
+                      <td class="text-center">
+                        <select
+                          name="courses[ENG_401_18]"
+                          id="course_ENG_401_18"
+                          data-row="3"
+                          data-course="ENG_401_18"
+                          data-credits="3"
+                          class="form-control courseGradesSelectBox"
+                          required="required"
+                        >
+                          <option value="">--Select--</option>
+                          <option data-conversion="4" value="A" selected="selected">A</option>
+                          <option data-conversion="3.7" value="A-">A-</option>
+                          <option data-conversion="3.3" value="B+">B+</option>
+                          <option data-conversion="3" value="B">B</option>
+                          <option data-conversion="2.7" value="B-">B-</option>
+                          <option data-conversion="2.3" value="C+">C+</option>
+                          <option data-conversion="2" value="C">C</option>
+                          <option data-conversion="1.7" value="C-">C-</option>
+                          <option data-conversion="1.3" value="D+">D+</option>
+                          <option data-conversion="1" value="D">D</option>
+                          <option data-conversion="0" value="F">F</option>
+                        </select>
+                      </td>
+                      <td id="factor3" class="factors text-center" data-default-value="4.00">4.00</td>
+                      <td id="points3" class="points text-center" data-default-value="12.00">12.00</td>
+                    </tr>
+
+                    <tr>
+                      <td>MATH 225 - 004</td>
+                      <td>Linear Algebra and Differential Equations</td>
+                      <td>Vis. Asst. Prof. Yaghoub Heydarzade</td>
+                      <td class="text-center">4</td>
+                      <td class="text-center">6,5</td>
+
+                      <td class="text-center">
+                        <select
+                          name="courses[MATH_225_4]"
+                          id="course_MATH_225_4"
+                          data-row="4"
+                          data-course="MATH_225_4"
+                          data-credits="4"
+                          class="form-control courseGradesSelectBox"
+                          required="required"
+                        >
+                          <option value="">--Select--</option>
+                          <option data-conversion="4" value="A" selected="selected">A</option>
+                          <option data-conversion="3.7" value="A-">A-</option>
+                          <option data-conversion="3.3" value="B+">B+</option>
+                          <option data-conversion="3" value="B">B</option>
+                          <option data-conversion="2.7" value="B-">B-</option>
+                          <option data-conversion="2.3" value="C+">C+</option>
+                          <option data-conversion="2" value="C">C</option>
+                          <option data-conversion="1.7" value="C-">C-</option>
+                          <option data-conversion="1.3" value="D+">D+</option>
+                          <option data-conversion="1" value="D">D</option>
+                          <option data-conversion="0" value="F">F</option>
+                        </select>
+                      </td>
+                      <td id="factor4" class="factors text-center" data-default-value="4.00">4.00</td>
+                      <td id="points4" class="points text-center" data-default-value="16.00">16.00</td>
+                    </tr>
+
+                    <tr>
+                      <td>PHYS 102 - 009</td>
+                      <td>General Physics II</td>
+                      <td>Prof. Mehmet Özgür Oktel</td>
+                      <td class="text-center">4</td>
+                      <td class="text-center">6,5</td>
+
+                      <td class="text-center">
+                        <select
+                          name="courses[PHYS_102_9]"
+                          id="course_PHYS_102_9"
+                          data-row="5"
+                          data-course="PHYS_102_9"
+                          data-credits="4"
+                          class="form-control courseGradesSelectBox"
+                          required="required"
+                        >
+                          <option value="">--Select--</option>
+                          <option data-conversion="4" value="A" selected="selected">A</option>
+                          <option data-conversion="3.7" value="A-">A-</option>
+                          <option data-conversion="3.3" value="B+">B+</option>
+                          <option data-conversion="3" value="B">B</option>
+                          <option data-conversion="2.7" value="B-">B-</option>
+                          <option data-conversion="2.3" value="C+">C+</option>
+                          <option data-conversion="2" value="C">C</option>
+                          <option data-conversion="1.7" value="C-">C-</option>
+                          <option data-conversion="1.3" value="D+">D+</option>
+                          <option data-conversion="1" value="D">D</option>
+                          <option data-conversion="0" value="F">F</option>
+                        </select>
+                      </td>
+                      <td id="factor5" class="factors text-center" data-default-value="4.00">4.00</td>
+                      <td id="points5" class="points text-center" data-default-value="16.00">16.00</td>
+                    </tr>
+                  </tbody>
+
+                  <tfoot>
+                    <tr>
+                      <th>&nbsp;</th>
+                      <th>&nbsp;</th>
+                      <th>&nbsp;</th>
+                      <th class="text-center">22</th>
+                      <th class="text-center">34</th>
+                      <th>&nbsp;</th>
+                      <th class="text-center" id="factorTotal">21.30</th>
+                      <th class="text-center" id="pointsTotal">79.20</th>
+                    </tr>
+                  </tfoot>
+                </table>
+
+                <div class="text-center">
+                  <input type="submit" class="btn btn-primary" value="Calculate Academic Standing" />
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <script type="text/javascript">
+            $(".courseGradesSelectBox").change(function () {
+              var rowId = $(this).data("row");
+              var gradeConversion = $(this).find(":selected").data("conversion") * 1;
+              var credits = $(this).data("credits") * 1;
+
+              var points = gradeConversion * credits;
+
+              $("#factor" + rowId).html(gradeConversion.toFixed(2));
+              $("#points" + rowId).html(points.toFixed(2));
+
+              var factorTotal = 0;
+              var pointsTotal = 0;
+              $(".factors").each(function () {
+                factorTotal += $(this).html() * 1;
+              });
+              $(".points").each(function () {
+                pointsTotal += $(this).html() * 1;
+              });
+
+              $("#factorTotal").html(factorTotal.toFixed(2));
+              $("#pointsTotal").html(pointsTotal.toFixed(2));
+            });
+          </script>
+          <!-- CONTENT ENDS -->
+
+          <br />
+          <br />
+          <br />
+          <br />
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

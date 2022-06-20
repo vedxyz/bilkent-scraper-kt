@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!--<link rel="stylesheet" href="assets/bootstrap/bootstrap.css" media="screen">-->
+    <link rel="stylesheet" href="/srs-v2/themes/united/css/bootstrap.css" media="screen" />
+    <link rel="stylesheet" href="/srs-v2/assets/toastr/toastr.css" media="screen" />
+    <link rel="stylesheet" href="/srs-v2/assets/jquery-ui/themes/smoothness/jquery-ui.min.css" media="screen" />
+
+    <link rel="stylesheet" href="/srs-v2/assets/my/application.css" media="screen" />
+    <link rel="icon" href="/srs-v2/favicon.ico" type="image/x-icon" />
+    <!-- BEGIN Manually Loaded Styles -->
+    <!-- END Manually Loaded Styles -->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="/srs-v2/assets/html5shiv.min.js"></script>
+      <script src="/srs-v2/assets/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="/srs-v2/assets/jquery/jquery.min.js"></script>
+
+    <script src="/srs-v2/assets/bootstrap/bootstrap.js"></script>
+    <script src="/srs-v2/assets/toastr/toastr.js"></script>
+    <script src="/srs-v2/assets/popconfirm/popconfirm.js"></script>
+    <script src="/srs-v2/assets/jquery-ui/jquery-ui.min.js"></script>
+
+    <link href="/srs-v2/assets/x-editable/css/bootstrap-editable.css" rel="stylesheet" />
+    <script src="/srs-v2/assets/x-editable/js/bootstrap-editable.min.js"></script>
+
+    <script src="/srs-v2/assets/microplugin/js/microplugin.js"></script>
+    <script src="/srs-v2/assets/sifter/sifter.js"></script>
+
+    <link href="/srs-v2/assets/selectize/css/selectize.bootstrap3.css" rel="stylesheet" />
+    <script src="/srs-v2/assets/selectize/js/selectize.js"></script>
+
+    <!-- BEGIN Manually Loaded JS -->
+    <!-- END Manually Loaded JS -->
+
+    <script src="/srs-v2/assets/my/application.js"></script>
+  </head>
+  <body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button
+            type="button"
+            class="navbar-toggle collapsed"
+            data-toggle="collapse"
+            data-target="#bs-example-navbar-collapse-1"
+          >
+            <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span>
+            <span class="icon-bar"></span> <span class="icon-bar"></span>
+          </button>
+
+          <a class="navbar-brand" href="/srs-v2/">SRS<sup style="color: aliceblue">v2</sup> </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li><a href="/srs/">Home</a></li>
+            <!-- <li><a href="/srs-v2/moodle">Moodle</a></li> -->
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <!--<li><a href="#">Feedback <span class="glyphicon glyphicon-send"></span></a></li>-->
+            <li>
+              <a href="/srs/"><u>Return to SRS Page / SRS sayfasına geri dön</u></a>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                <img
+                  class="img-rounded"
+                  style="width: auto; height: 25px"
+                  src="/webserv/image.php?cry=536a0af4a0317cf1b097a9c995d22c87&id=22001234" />
+                William John (22001234) <span class="caret"></span
+              ></a>
+              <ul class="dropdown-menu" role="menu">
+                <!--
+                            <li><a href="#">Profile</a></li>
+                            <li><a href="#">Update Information</a></li>
+                            -->
+                <li class="divider"></li>
+                <li><a href="/srs-v2/user/logout/">Logout</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+      </div>
+      <!-- /.container-fluid -->
+    </nav>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="page-header">
+            <h3><strong>Schedule</strong> &raquo; Weekly</h3>
+          </div>
+        </div>
+      </div>
+      <!-- FLASH MESSAGES STARTS -->
+      <!-- FLASH MESSAGES ENDS -->
+
+      <div class="row">
+        <div class="col-lg-12">
+          <!-- CONTENT STARTS -->
+
+          <div class="row" style="margin-bottom: 20px">
+            <div class="col-md-12">
+              <div class="pull-right">
+                <a class="btn btn-sm" style="color: #fff; background-color: #ff6600" href="/srs-v2/schedule/index/daily"
+                  >Today's Courses</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <table class="table table-bordered">
+            <tr>
+              <td valign="top" style="min-width: 120px" class="bold text-center bg-warning">Hours</td>
+              <td valign="top" style="min-width: 120px" class="bold text-center bg-info">Monday</td>
+              <td valign="top" style="min-width: 120px" class="bold text-center bg-info">Tuesday</td>
+              <td valign="top" style="min-width: 120px" class="bold text-center bg-info">Wednesday</td>
+              <td valign="top" style="min-width: 120px" class="bold text-center bg-info">Thursday</td>
+              <td valign="top" style="min-width: 120px" class="bold text-center bg-info">Friday</td>
+              <td valign="top" style="min-width: 120px" class="bold text-center bg-info">Saturday</td>
+              <td valign="top" style="min-width: 120px" class="bold text-center bg-info">Sunday</td>
+            </tr>
+
+            <tr>
+              <td valign="top" style="vertical-align: top; min-width: 120px" class="bold text-center bg-warning">
+                08:30 - 09:20
+              </td>
+
+              <td class="text-center" style="padding: 0px">
+                <div class="pull-left" style="margin: 2px; padding: 4px; background-color: #eb9642">
+                  CS 224 - 001<br />EA-Z04<br />Face-to-face Lab/Studio<br />
+                </div>
+              </td>
+
+              <td class="text-center" style="padding: 0px">
+                <div class="pull-left" style="margin: 2px; padding: 4px; background-color: #eb9642">
+                  PHYS 102 - 009<br />Face-to-face Lab/Studio<br />(Spare Hour)<br />
+                </div>
+              </td>
+
+              <td class="text-center" style="padding: 0px">
+                <div class="pull-left" style="margin: 2px; padding: 4px; background-color: #77c93c">
+                  CS 224 - 001<br />EA-Z03<br />Face-to-face Lecture<br />
+                </div>
+              </td>
+
+              <td class="text-center" style="padding: 0px">
+                <div class="pull-left" style="margin: 2px; padding: 4px; background-color: #77c93c">
+                  ENG 401 - 018<br />G-229<br />Face-to-face Lecture<br />(Spare Hour)<br />
+                </div>
+              </td>
+
+              <td class="text-center" style="padding: 0px">
+                <div class="pull-left" style="margin: 2px; padding: 4px; background-color: #77c93c">
+                  PHYS 102 - 009<br />B-Z02<br />Face-to-face Lecture<br />(Spare Hour)<br />
+                </div>
+              </td>
+
+              <td class="text-center" style="padding: 0px">&nbsp;</td>
+
+              <td class="text-center" style="padding: 0px">&nbsp;</td>
+            </tr>
+
+            <tr>
+              <td valign="top" style="vertical-align: top; min-width: 120px" class="bold text-center bg-warning">
+                09:30 - 10:20
+              </td>
+
+              <td class="text-center" style="padding: 0px">
+                <div class="pull-left" style="margin: 2px; padding: 4px; background-color: #eb9642">
+                  CS 224 - 001<br />EA-Z04<br />Face-to-face Lab/Studio<br />
+                </div>
+              </td>
+
+              <td class="text-center" style="padding: 0px">
+                <div class="pull-left" style="margin: 2px; padding: 4px; background-color: #eb9642">
+                  PHYS 102 - 009<br />Face-to-face Lab/Studio<br />
+                </div>
+              </td>
+
+              <td class="text-center" style="padding: 0px">
+                <div class="pull-left" style="margin: 2px; padding: 4px; background-color: #77c93c">
+                  CS 224 - 001<br />EA-Z03<br />Face-to-face Lecture<br />(Spare Hour)<br />
+                </div>
+              </td>
+
+              <td class="text-center" style="padding: 0px">
+                <div class="pull-left" style="margin: 2px; padding: 4px; background-color: #77c93c">
+                  ENG 401 - 018<br />G-229<br />Face-to-face Lecture<br />
+                </div>
+              </td>
+
+              <td class="text-center" style="padding: 0px">
+                <div class="pull-left" style="margin: 2px; padding: 4px; background-color: #77c93c">
+                  PHYS 102 - 009<br />B-Z02<br />Face-to-face Lecture<br />
+                </div>
+              </td>
+
+              <td class="text-center" style="padding: 0px">&nbsp;</td>
+
+              <td class="text-center" style="padding: 0px">&nbsp;</td>
+            </tr>
+
+            <tr>
+              <td valign="top" style="vertical-align: top; min-width: 120px" class="bold text-center bg-warning">
+                10:30 - 11:20
+              </td>
+
+              <td class="text-center" style="padding: 0px">
+                <div class="pull-left" style="margin: 2px; padding: 4px; background-color: #eb9642">
+                  CS 224 - 001<br />EA-Z04<br />Face-to-face Lab/Studio<br />
+                </div>
+              </td>
+
+              <td class="text-center" style="padding: 0px">
+                <div class="pull-left" style="margin: 2px; padding: 4px; background-color: #eb9642">
+                  PHYS 102 - 009<br />Face-to-face Lab/Studio<br />
+                </div>
+              </td>
+
+              <td class="text-center" style="padding: 0px">
+                <div class="pull-left" style="margin: 2px; padding: 4px; background-color: #77c93c">
+                  CS 202 - 001<br />B-Z08<br />Face-to-face Lecture<br />
+                </div>
+              </td>
+
+              <td class="text-center" style="padding: 0px">
+                <div class="pull-left" style="margin: 2px; padding: 4px; background-color: #77c93c">
+                  MATH 225 - 004<br />G-236<br />Face-to-face Lecture<br />
+                </div>
+              </td>
+
+              <td class="text-center" style="padding: 0px">
+                <div class="pull-left" style="margin: 2px; padding: 4px; background-color: #77c93c">
+                  CS 319 - 001<br />EE-412<br />Face-to-face Lecture<br />
+                </div>
+              </td>
+
+              <td class="text-center" style="padding: 0px">&nbsp;</td>
+
+              <td class="text-center" style="padding: 0px">&nbsp;</td>
+            </tr>
+
+            <tr>
+              <td valign="top" style="vertical-align: top; min-width: 120px" class="bold text-center bg-warning">
+                11:30 - 12:20
+              </td>
+
+              <td class="text-center" style="padding: 0px">
+                <div class="pull-left" style="margin: 2px; padding: 4px; background-color: #eb9642">
+                  CS 224 - 001<br />EA-Z04<br />Face-to-face Lab/Studio<br />
+                </div>
+              </td>
+
+              <td class="text-center" style="padding: 0px">
+                <div class="pull-left" style="margin: 2px; padding: 4px; background-color: #eb9642">
+                  PHYS 102 - 009<br />Face-to-face Lab/Studio<br />
+                </div>
+              </td>
+
+              <td class="text-center" style="padding: 0px">
+                <div class="pull-left" style="margin: 2px; padding: 4px; background-color: #77c93c">
+                  CS 202 - 001<br />B-Z08<br />Face-to-face Lecture<br />
+                </div>
+              </td>
+
+              <td class="text-center" style="padding: 0px">
+                <div class="pull-left" style="margin: 2px; padding: 4px; background-color: #77c93c">
+                  MATH 225 - 004<br />G-236<br />Face-to-face Lecture<br />
+                </div>
+              </td>
+
+              <td class="text-center" style="padding: 0px">
+                <div class="pull-left" style="margin: 2px; padding: 4px; background-color: #77c93c">
+                  CS 319 - 001<br />EE-412<br />Face-to-face Lecture<br />(Spare Hour)<br />
+                </div>
+              </td>
+
+              <td class="text-center" style="padding: 0px">&nbsp;</td>
+
+              <td class="text-center" style="padding: 0px">&nbsp;</td>
+            </tr>
+
+            <tr>
+              <td valign="top" style="vertical-align: top; min-width: 120px" class="bold text-center bg-warning">
+                12:30 - 13:20
+              </td>
+
+              <td class="text-center" style="padding: 0px">&nbsp;</td>
+
+              <td class="text-center" style="padding: 0px">&nbsp;</td>
+
+              <td class="text-center" style="padding: 0px">&nbsp;</td>
+
+              <td class="text-center" style="padding: 0px">&nbsp;</td>
+
+              <td class="text-center" style="padding: 0px">&nbsp;</td>
+
+              <td class="text-center" style="padding: 0px">&nbsp;</td>
+
+              <td class="text-center" style="padding: 0px">&nbsp;</td>
+            </tr>
+
+            <tr>
+              <td valign="top" style="vertical-align: top; min-width: 120px" class="bold text-center bg-warning">
+                13:30 - 14:20
+              </td>
+
+              <td class="text-center" style="padding: 0px">
+                <div class="pull-left" style="margin: 2px; padding: 4px; background-color: #77c93c">
+                  ENG 401 - 018<br />G-229<br />Face-to-face Lecture<br />
+                </div>
+              </td>
+
+              <td class="text-center" style="padding: 0px">
+                <div class="pull-left" style="margin: 2px; padding: 4px; background-color: #77c93c">
+                  PHYS 102 - 009<br />B-Z02<br />Face-to-face Lecture<br />
+                </div>
+              </td>
+
+              <td class="text-center" style="padding: 0px">&nbsp;</td>
+
+              <td class="text-center" style="padding: 0px">&nbsp;</td>
+
+              <td class="text-center" style="padding: 0px">
+                <div class="pull-left" style="margin: 2px; padding: 4px; background-color: #77c93c">
+                  CS 224 - 001<br />EA-Z03<br />Face-to-face Lecture<br />
+                </div>
+              </td>
+
+              <td class="text-center" style="padding: 0px">&nbsp;</td>
+
+              <td class="text-center" style="padding: 0px">&nbsp;</td>
+            </tr>
+
+            <tr>
+              <td valign="top" style="vertical-align: top; min-width: 120px" class="bold text-center bg-warning">
+                14:30 - 15:20
+              </td>
+
+              <td class="text-center" style="padding: 0px">
+                <div class="pull-left" style="margin: 2px; padding: 4px; background-color: #77c93c">
+                  ENG 401 - 018<br />G-229<br />Face-to-face Lecture<br />
+                </div>
+              </td>
+
+              <td class="text-center" style="padding: 0px">
+                <div class="pull-left" style="margin: 2px; padding: 4px; background-color: #77c93c">
+                  PHYS 102 - 009<br />B-Z02<br />Face-to-face Lecture<br />
+                </div>
+              </td>
+
+              <td class="text-center" style="padding: 0px">&nbsp;</td>
+
+              <td class="text-center" style="padding: 0px">&nbsp;</td>
+
+              <td class="text-center" style="padding: 0px">
+                <div class="pull-left" style="margin: 2px; padding: 4px; background-color: #77c93c">
+                  CS 224 - 001<br />EA-Z03<br />Face-to-face Lecture<br />
+                </div>
+              </td>
+
+              <td class="text-center" style="padding: 0px">&nbsp;</td>
+
+              <td class="text-center" style="padding: 0px">&nbsp;</td>
+            </tr>
+
+            <tr>
+              <td valign="top" style="vertical-align: top; min-width: 120px" class="bold text-center bg-warning">
+                15:30 - 16:20
+              </td>
+
+              <td class="text-center" style="padding: 0px">
+                <div class="pull-left" style="margin: 2px; padding: 4px; background-color: #77c93c">
+                  MATH 225 - 004<br />G-236<br />Face-to-face Lecture<br />
+                </div>
+              </td>
+
+              <td class="text-center" style="padding: 0px">
+                <div class="pull-left" style="margin: 2px; padding: 4px; background-color: #77c93c">
+                  CS 319 - 001<br />EE-412<br />Face-to-face Lecture<br />
+                </div>
+              </td>
+
+              <td class="text-center" style="padding: 0px">&nbsp;</td>
+
+              <td class="text-center" style="padding: 0px">&nbsp;</td>
+
+              <td class="text-center" style="padding: 0px">
+                <div class="pull-left" style="margin: 2px; padding: 4px; background-color: #77c93c">
+                  CS 202 - 001<br />B-Z08<br />Face-to-face Lecture<br />
+                </div>
+              </td>
+
+              <td class="text-center" style="padding: 0px">&nbsp;</td>
+
+              <td class="text-center" style="padding: 0px">&nbsp;</td>
+            </tr>
+
+            <tr>
+              <td valign="top" style="vertical-align: top; min-width: 120px" class="bold text-center bg-warning">
+                16:30 - 17:20
+              </td>
+
+              <td class="text-center" style="padding: 0px">
+                <div class="pull-left" style="margin: 2px; padding: 4px; background-color: #77c93c">
+                  MATH 225 - 004<br />G-236<br />Face-to-face Lecture<br />
+                </div>
+              </td>
+
+              <td class="text-center" style="padding: 0px">
+                <div class="pull-left" style="margin: 2px; padding: 4px; background-color: #77c93c">
+                  CS 319 - 001<br />EE-412<br />Face-to-face Lecture<br />
+                </div>
+              </td>
+
+              <td class="text-center" style="padding: 0px">&nbsp;</td>
+
+              <td class="text-center" style="padding: 0px">&nbsp;</td>
+
+              <td class="text-center" style="padding: 0px">
+                <div class="pull-left" style="margin: 2px; padding: 4px; background-color: #77c93c">
+                  CS 202 - 001<br />B-Z08<br />Face-to-face Lecture<br />(Spare Hour)<br />
+                </div>
+              </td>
+
+              <td class="text-center" style="padding: 0px">&nbsp;</td>
+
+              <td class="text-center" style="padding: 0px">&nbsp;</td>
+            </tr>
+
+            <tr>
+              <td valign="top" style="vertical-align: top; min-width: 120px" class="bold text-center bg-warning">
+                17:30 - 18:20
+              </td>
+
+              <td class="text-center" style="padding: 0px">&nbsp;</td>
+
+              <td class="text-center" style="padding: 0px">&nbsp;</td>
+
+              <td class="text-center" style="padding: 0px">&nbsp;</td>
+
+              <td class="text-center" style="padding: 0px">&nbsp;</td>
+
+              <td class="text-center" style="padding: 0px">&nbsp;</td>
+
+              <td class="text-center" style="padding: 0px">&nbsp;</td>
+
+              <td class="text-center" style="padding: 0px">&nbsp;</td>
+            </tr>
+
+            <tr>
+              <td valign="top" style="vertical-align: top; min-width: 120px" class="bold text-center bg-warning">
+                18:30 - 19:20
+              </td>
+
+              <td class="text-center" style="padding: 0px">&nbsp;</td>
+
+              <td class="text-center" style="padding: 0px">&nbsp;</td>
+
+              <td class="text-center" style="padding: 0px">&nbsp;</td>
+
+              <td class="text-center" style="padding: 0px">&nbsp;</td>
+
+              <td class="text-center" style="padding: 0px">&nbsp;</td>
+
+              <td class="text-center" style="padding: 0px">&nbsp;</td>
+
+              <td class="text-center" style="padding: 0px">&nbsp;</td>
+            </tr>
+
+            <tr>
+              <td valign="top" style="vertical-align: top; min-width: 120px" class="bold text-center bg-warning">
+                19:30 - 20:20
+              </td>
+
+              <td class="text-center" style="padding: 0px">&nbsp;</td>
+
+              <td class="text-center" style="padding: 0px">&nbsp;</td>
+
+              <td class="text-center" style="padding: 0px">&nbsp;</td>
+
+              <td class="text-center" style="padding: 0px">&nbsp;</td>
+
+              <td class="text-center" style="padding: 0px">&nbsp;</td>
+
+              <td class="text-center" style="padding: 0px">&nbsp;</td>
+
+              <td class="text-center" style="padding: 0px">&nbsp;</td>
+            </tr>
+
+            <tr>
+              <td valign="top" style="vertical-align: top; min-width: 120px" class="bold text-center bg-warning">
+                20:30 - 21:20
+              </td>
+
+              <td class="text-center" style="padding: 0px">&nbsp;</td>
+
+              <td class="text-center" style="padding: 0px">&nbsp;</td>
+
+              <td class="text-center" style="padding: 0px">&nbsp;</td>
+
+              <td class="text-center" style="padding: 0px">&nbsp;</td>
+
+              <td class="text-center" style="padding: 0px">&nbsp;</td>
+
+              <td class="text-center" style="padding: 0px">&nbsp;</td>
+
+              <td class="text-center" style="padding: 0px">&nbsp;</td>
+            </tr>
+
+            <tr>
+              <td valign="top" style="vertical-align: top; min-width: 120px" class="bold text-center bg-warning">
+                21:30 - 22:20
+              </td>
+
+              <td class="text-center" style="padding: 0px">&nbsp;</td>
+
+              <td class="text-center" style="padding: 0px">&nbsp;</td>
+
+              <td class="text-center" style="padding: 0px">&nbsp;</td>
+
+              <td class="text-center" style="padding: 0px">&nbsp;</td>
+
+              <td class="text-center" style="padding: 0px">&nbsp;</td>
+
+              <td class="text-center" style="padding: 0px">&nbsp;</td>
+
+              <td class="text-center" style="padding: 0px">&nbsp;</td>
+            </tr>
+          </table>
+
+          <table class="table">
+            <tr>
+              <td style="width: 20px; margin: 5px; padding: 2px; background-color: #0092c7">&nbsp;</td>
+              <td style="margin: 5px; padding: 2px">Online/Hybrid Lecture</td>
+            </tr>
+            <tr>
+              <td style="width: 20px; margin: 5px; padding: 2px; background-color: #77c93c">&nbsp;</td>
+              <td style="margin: 5px; padding: 2px">Face-to-face Lecture</td>
+            </tr>
+            <tr>
+              <td style="width: 20px; margin: 5px; padding: 2px; background-color: #8787ff">&nbsp;</td>
+              <td style="margin: 5px; padding: 2px">Recitation</td>
+            </tr>
+            <tr>
+              <td style="width: 20px; margin: 5px; padding: 2px; background-color: #eb9642">&nbsp;</td>
+              <td style="margin: 5px; padding: 2px">Face-to-face Lab/Studio</td>
+            </tr>
+            <tr>
+              <td style="width: 20px; margin: 5px; padding: 2px; background-color: #d4556a">&nbsp;</td>
+              <td style="margin: 5px; padding: 2px">Online Lab/Studio</td>
+            </tr>
+          </table>
+
+          <div id="zoomDetails" class="modal">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title">Zoom Information</h4>
+                </div>
+                <div class="modal-body" id="zoomDetailsContent">Loading...</div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <script type="text/javascript">
+            function openZoomInfo(id) {
+              $("#zoomDetailsContent").html("Loading...");
+
+              var content = $("#zoomInfo_" + id).html();
+              $("#zoomDetailsContent").html(content);
+              $("#zoomDetails").modal("show");
+            }
+
+            $("#staffId").on("change", function () {
+              var staffId = $(this).val();
+              if (staffId) {
+                window.location.href = $(this).data("url") + staffId;
+              }
+            });
+          </script>
+          <!-- CONTENT ENDS -->
+
+          <br />
+          <br />
+          <br />
+          <br />
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
