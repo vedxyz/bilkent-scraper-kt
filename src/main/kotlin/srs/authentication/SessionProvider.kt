@@ -19,15 +19,8 @@ internal suspend fun initializeLogin(id: String, password: String): LoginRequest
     val headers = Headers.headersOf("Cookie", cookie)
 
     val oauthAuthResponse = HttpUtils.fetch(getRedirect(oauthMainResponse), HttpMethods.GET, headers)
-    val loginPageResponse = HttpUtils.fetch(getRedirect(oauthAuthResponse), HttpMethods.GET, headers)
-
-    val formCode: String = loginPageResponse.use {
-        Jsoup.parse(it.body!!.string())
-            .getElementById("LoginForm_password_em_")
-            ?.parent()
-            ?.selectFirst("input")
-            ?.attr("name") ?: throw Exception("Couldn't find `formCode`")
-    }
+    val loginIntermediatePageResponse = HttpUtils.fetch(getRedirect(oauthAuthResponse), HttpMethods.GET, headers)
+    val loginPageResponse = HttpUtils.fetch(getRedirect(loginIntermediatePageResponse), HttpMethods.GET, headers)
 
     HttpUtils.fetch(
         loginPageResponse.request.url.toString(),
@@ -36,7 +29,6 @@ internal suspend fun initializeLogin(id: String, password: String): LoginRequest
         FormBody.Builder()
             .add("LoginForm[username]", id)
             .add("LoginForm[password]", password)
-            .add(formCode, "")
             .add("yt0", "")
             .build()
     )
