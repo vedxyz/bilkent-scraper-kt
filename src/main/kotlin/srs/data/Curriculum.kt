@@ -23,6 +23,9 @@ data class CurriculumCourseItem(
 @Serializable
 data class CurriculumSemester(val items: List<CurriculumCourseItem>)
 
+@Serializable
+data class Curriculum(val semesters: List<CurriculumSemester>)
+
 private val replacementPattern = Pattern.compile("([A-Z]+)\\W(\\d+)\\W(.*)\\W?")
 
 internal fun parseCurriculum(dom: Document) = dom.select("table.printMod").drop(2).dropLast(2).map { table ->
@@ -44,9 +47,9 @@ internal fun parseCurriculum(dom: Document) = dom.select("table.printMod").drop(
                 else null
             })
     }.let { CurriculumSemester(it) }
-}
+}.let { Curriculum(it) }
 
-internal suspend fun getCurriculum(cookie: String): List<CurriculumSemester> {
+internal suspend fun getCurriculum(cookie: String): Curriculum {
     val responseText = HttpUtils.guardedFetch("https://stars.bilkent.edu.tr/srs/ajax/curriculum.php", cookie)
     return parseCurriculum(Jsoup.parse(responseText))
 }
