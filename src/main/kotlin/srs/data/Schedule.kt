@@ -49,8 +49,8 @@ internal fun parseWeeklySchedule(dom: Document): WeeklySchedule {
             details = if (row.child(i).childrenSize() == 0) null else row.child(i)
                 .child(0)
                 .html()
-                .dropLast("<br>".length)
-                .split("<br>")
+                .split("\n<br>")
+                .dropLast(1)
         )
     }.let { DailySchedule(it) })
 
