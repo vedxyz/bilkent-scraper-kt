@@ -32,7 +32,7 @@ class SRSSession(private val cookie: String) {
         ): SRSSession {
             val loginRequestInfo = initializeLogin(id, password)
             val verificationCode = getVerificationCode(email, emailPassword, boxName)
-            if (loginRequestInfo.reference != verificationCode.ref) throw Exception("Reference code mismatch during automated verification (${loginRequestInfo.reference} != ${verificationCode.ref})")
+            if (loginRequestInfo.reference != verificationCode.reference) throw Exception("Reference code mismatch during automated verification (${loginRequestInfo.reference} != ${verificationCode.reference})")
             return SRSSession(verifyEmail(loginRequestInfo.cookie, verificationCode.code))
         }
     }

@@ -15,9 +15,9 @@ private data class WebmailLoginPrerequisites(val token: String, val sessionId: S
 
 /**
  * @param code 5-digit verification code
- * @param ref 4-character reference code
+ * @param reference 4-character reference code
  */
-data class VerificationCode(val code: String, val ref: String)
+data class VerificationCode(val code: String, val reference: String)
 
 private suspend fun getWebmailLoginPrerequisites(): WebmailLoginPrerequisites {
     val pageResponse = HttpUtils.fetch("https://webmail.bilkent.edu.tr")
