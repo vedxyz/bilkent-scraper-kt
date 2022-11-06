@@ -26,7 +26,7 @@ enum class SemesterType(val value: Int) { Fall(1), Spring(2), Summer(3) }
  * @param season The season segment of the semester: 2020-2021 **Fall**
  */
 @Serializable
-data class Semester(val year: String, val season: SemesterType) {
+data class Semester(val year: String, val season: SemesterType) : Comparable<Semester> {
     companion object {
         private val semesterPattern = Pattern.compile("(\\d{4})-\\d{4}\\W(Fall|Spring|Summer)")
 
@@ -38,6 +38,8 @@ data class Semester(val year: String, val season: SemesterType) {
             if (find()) Semester(group(1), SemesterType.valueOf(group(2))) else null
         }
     }
+
+    override fun compareTo(other: Semester): Int = compareValuesBy(this, other, { it.year }, { it.season })
 }
 
 enum class LetterGrade(val representation: String) {

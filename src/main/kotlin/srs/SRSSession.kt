@@ -132,6 +132,13 @@ class SRSSession(private val cookie: String) {
         if (semester == null) getCurrentSemesterCourses(cookie) else getSemesterCourses(cookie, semester)
 
     /**
+     * Provides the list of semesters valid for the user (i.e., has taken courses)
+     *
+     * @return The parsed list of semesters
+     */
+    suspend fun getSemesters() = getSemesters(cookie)
+
+    /**
      * Provides the contents of [/srs/ajax/transcript.php](https://stars.bilkent.edu.tr/srs/ajax/transcript.php)
      *
      * The credit and point sums are omitted.
