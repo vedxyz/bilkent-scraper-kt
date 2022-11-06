@@ -5,12 +5,21 @@ import kotlinx.serialization.Serializable
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 
+/**
+ * Represents a row on the grade table for a course.
+ */
 @Serializable
 data class GradeItem(val title: String, val date: String, val grade: String, val comment: String)
 
+/**
+ * Represents a category of grades for a course.
+ */
 @Serializable
 data class GradeCategory(val type: String, val items: MutableList<GradeItem>)
 
+/**
+ * Represents the full grade data for a course.
+ */
 @Serializable
 data class CourseGrades(val title: String, val categories: List<GradeCategory>)
 
@@ -36,6 +45,7 @@ internal fun parseGrades(dom: Document) = dom.getElementsByClass("gradeDiv").map
     )
 }
 
+// TODO: Handle `null` semester with non-null course
 internal suspend fun getGrades(cookie: String, semester: Semester?, course: CourseSection?): List<CourseGrades> {
     if (semester == null && course != null) throw Exception("Cannot query a course with no semester provided")
 

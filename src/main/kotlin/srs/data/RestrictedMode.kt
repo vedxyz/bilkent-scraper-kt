@@ -7,6 +7,9 @@ import okhttp3.FormBody
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 
+/**
+ * Represents a row on the data of a letter grade announcement.
+ */
 @Serializable
 data class LetterGradeResult(val course: String, val grade: LetterGrade)
 

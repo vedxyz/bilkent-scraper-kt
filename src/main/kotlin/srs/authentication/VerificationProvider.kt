@@ -12,6 +12,11 @@ import org.jsoup.Jsoup
 import java.util.regex.Pattern
 
 private data class WebmailLoginPrerequisites(val token: String, val sessionId: String)
+
+/**
+ * @param code 5-digit verification code
+ * @param ref 4-character reference code
+ */
 data class VerificationCode(val code: String, val ref: String)
 
 private suspend fun getWebmailLoginPrerequisites(): WebmailLoginPrerequisites {
@@ -56,7 +61,6 @@ private suspend fun getLatestUid(session: String, boxName: String): String {
     ).use {
         return Json.parseToJsonElement(it.body!!.string()).jsonObject["env"]!!.jsonObject["messagecount"]!!.jsonPrimitive.content
     }
-
 }
 
 private suspend fun getVerificationMail(session: String, boxName: String, uid: String): VerificationCode {
@@ -74,6 +78,15 @@ private suspend fun getVerificationMail(session: String, boxName: String, uid: S
     }
 }
 
+/**
+ * Scrapes the latest SRS 2FA code from a dedicated mailbox.
+ * The mailbox should be set up with mail filters to redirect all codes into it.
+ *
+ * @param email Bilkent Webmail address
+ * @param password Email password
+ * @param boxName Name of dedicated 2FA code mailbox, "STARS Auth" by default
+ * @return 2FA code and its reference code
+ */
 suspend fun getVerificationCode(email: String, password: String, boxName: String = "STARS Auth"): VerificationCode {
     val session = getWebmailSession(email, password)
     val uid = getLatestUid(session, boxName)

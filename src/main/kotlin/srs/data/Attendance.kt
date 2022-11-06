@@ -5,9 +5,15 @@ import kotlinx.serialization.Serializable
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 
+/**
+ * Represents a row on the attendance table for a course.
+ */
 @Serializable
 data class AttendanceItem(val title: String, val date: String, val attendance: String)
 
+/**
+ * Represents the full attendance data for a course.
+ */
 @Serializable
 data class CourseAttendance(val title: String, val data: List<AttendanceItem>, val ratio: String)
 
@@ -25,6 +31,7 @@ internal fun parseAttendance(dom: Document): List<CourseAttendance> = dom.getEle
     )
 }
 
+// TODO: Handle `null` semester with non-null course
 internal suspend fun getAttendance(cookie: String, semester: Semester?, course: CourseSection?): List<CourseAttendance> {
     val semesterQuery: String = if (semester == null) "" else "semester=${semester.year}${semester.season.value}"
     val courseQuery: String =

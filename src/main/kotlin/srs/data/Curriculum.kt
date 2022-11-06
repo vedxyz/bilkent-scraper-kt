@@ -9,6 +9,9 @@ import java.util.regex.Pattern
 @Serializable
 data class CurriculumCourseReplacement(val course: Course, val name: String)
 
+/**
+ * Represents a single row on the curriculum.
+ */
 @Serializable
 data class CurriculumCourseItem(
     val course: Course?,
@@ -20,9 +23,15 @@ data class CurriculumCourseItem(
     val replacement: CurriculumCourseReplacement?
 )
 
+/**
+ * Represents a full semester on the curriculum.
+ */
 @Serializable
 data class CurriculumSemester(val items: List<CurriculumCourseItem>)
 
+/**
+ * Represents the full curriculum.
+ */
 @Serializable
 data class Curriculum(val semesters: List<CurriculumSemester>)
 

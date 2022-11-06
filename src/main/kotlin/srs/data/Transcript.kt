@@ -8,6 +8,9 @@ import org.jsoup.nodes.Document
 @Serializable
 data class TranscriptSemesterCourse(val course: Course, val name: String, val grade: LetterGrade, val credits: String)
 
+/**
+ * Represents a single semester on the transcript.
+ */
 @Serializable
 data class TranscriptSemester(
     val semester: Semester,

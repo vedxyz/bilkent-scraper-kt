@@ -49,6 +49,19 @@ internal object HttpUtils {
 
     private const val LOGGED_OUT_RESPONSE = "You are logged out from SRS"
 
+    /**
+     * Fetches and returns the text content from an SRS endpoint requiring authentication.
+     *
+     * An error is thrown if the cookie is invalid.
+     *
+     * By default, a `GET` request is sent.
+     * If a [body] is given, a `POST` request is sent instead.
+     *
+     * @param url The URL to fetch
+     * @param cookie A valid Bilkent SRS session cookie (`PHPSESSID=...`)
+     * @param body the body to be `POST`ed
+     * @returns The text content of the response
+     */
     suspend fun guardedFetch(url: String, cookie: String, body: RequestBody? = null): String {
         fetch(
             url, if (body == null) HttpMethods.GET else HttpMethods.POST, Headers.headersOf("Cookie", cookie), body
@@ -59,6 +72,15 @@ internal object HttpUtils {
         }
     }
 
+    /**
+     * Fetches and returns the base64 encoded format of an image from an SRS endpoint requiring authentication.
+     *
+     * An error is thrown if the cookie is invalid.
+     *
+     * @param url The URL to fetch
+     * @param cookie A valid Bilkent SRS session cookie (`PHPSESSID=...`)
+     * @returns The image, as an encoded base64 string
+     */
     suspend fun guardedFetchImage(url: String, cookie: String): String {
         fetch(url, HttpMethods.GET, Headers.headersOf("Cookie", cookie)).use {
             val textContent = it.peekBody(LOGGED_OUT_RESPONSE.toByteArray().size.toLong()).string()
