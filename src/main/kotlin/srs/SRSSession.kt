@@ -139,6 +139,13 @@ class SRSSession(private val cookie: String) {
     suspend fun getSemesters() = getSemesters(cookie)
 
     /**
+     * Provides the current semester obtained from the SRS homepage
+     *
+     * @return Current semester
+     */
+    suspend fun getCurrentSemester() = getCurrentSemester(cookie)
+
+    /**
      * Provides the contents of [/srs/ajax/transcript.php](https://stars.bilkent.edu.tr/srs/ajax/transcript.php)
      *
      * The credit and point sums are omitted.
