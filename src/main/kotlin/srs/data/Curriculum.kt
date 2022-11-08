@@ -1,6 +1,7 @@
 package srs.data
 
 import core.HttpUtils
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
@@ -8,6 +9,9 @@ import java.util.regex.Pattern
 
 @Serializable
 data class CurriculumCourseReplacement(val course: Course, val name: String)
+
+@Serializable
+data class CurriculumCoursePastTake(val grade: LetterGrade, val credits: String, val semester: Semester)
 
 /**
  * Represents a single row on the curriculum.
@@ -21,7 +25,16 @@ data class CurriculumCourseItem(
     val credits: String?,
     var semester: Semester?,
     val replacement: CurriculumCourseReplacement?
-)
+) {
+    @SerialName("pastTakes")
+    private var _pastTakes: MutableList<CurriculumCoursePastTake>? = null
+    val pastTakes: List<CurriculumCoursePastTake>? get() = _pastTakes?.toList()
+
+    internal fun addPastTake(pastTake: CurriculumCoursePastTake) {
+        if (_pastTakes == null) _pastTakes = mutableListOf()
+        _pastTakes!!.add(pastTake)
+    }
+}
 
 /**
  * Represents a full semester on the curriculum.
@@ -55,6 +68,17 @@ internal fun parseCurriculum(dom: Document) = dom.select("table.printMod").drop(
                 )
                 else null
             })
+    }.let {
+        val resultList = mutableListOf<CurriculumCourseItem>()
+        it.forEach { item ->
+            if (item.course == null && item.name == "N/A" && item.replacement == null) {
+                assert(item.grade != null && item.credits != null && item.semester != null)
+                resultList.last().addPastTake(CurriculumCoursePastTake(item.grade!!, item.credits!!, item.semester!!))
+            } else {
+                resultList.add(item)
+            }
+        }
+        resultList
     }.let { CurriculumSemester(it) }
 }.let { Curriculum(it) }
 
