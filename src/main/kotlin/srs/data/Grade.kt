@@ -1,6 +1,7 @@
 package srs.data
 
 import core.HttpUtils
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
@@ -15,7 +16,15 @@ data class GradeItem(val title: String, val date: String, val grade: String, val
  * Represents a category of grades for a course.
  */
 @Serializable
-data class GradeCategory(val type: String, val items: MutableList<GradeItem>)
+data class GradeCategory(val type: String) {
+    @SerialName("items")
+    private var _items: MutableList<GradeItem> = mutableListOf()
+    val items: List<GradeItem> get() = _items.toList()
+
+    internal fun addGradeItem(gradeItem: GradeItem) {
+        _items.add(gradeItem)
+    }
+}
 
 /**
  * Represents the full grade data for a course.
@@ -28,9 +37,9 @@ internal fun parseGrades(dom: Document) = dom.getElementsByClass("gradeDiv").map
 
     div.select("tbody > tr").drop(1).filter { it.childrenSize() == 5 }.forEach { row ->
         val categoryType = row.child(1).text().trim().ifEmpty { "Unknown" }
-        categoryTable.putIfAbsent(categoryType, GradeCategory(categoryType, mutableListOf()))
+        categoryTable.putIfAbsent(categoryType, GradeCategory(categoryType))
 
-        categoryTable[categoryType]!!.items.add(
+        categoryTable[categoryType]!!.addGradeItem(
             GradeItem(
                 row.child(0).text().trim().ifEmpty { "N/A" },
                 row.child(2).text().trim().ifEmpty { "N/A" },
