@@ -30,7 +30,7 @@ data class GradeCategory(val type: String) {
  * Represents the full grade data for a course.
  */
 @Serializable
-data class CourseGrades(val title: String, val categories: List<GradeCategory>)
+data class CourseGrades(val title: String, val categories: List<GradeCategory>) : java.io.Serializable
 
 internal fun parseGrades(dom: Document) = dom.getElementsByClass("gradeDiv").map { div ->
     val categoryTable: MutableMap<String, GradeCategory> = mutableMapOf()
