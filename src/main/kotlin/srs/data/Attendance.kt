@@ -15,7 +15,7 @@ data class AttendanceItem(val title: String, val date: String, val attendance: S
  * Represents the full attendance data for a course.
  */
 @Serializable
-data class CourseAttendance(val title: String, val data: List<AttendanceItem>, val ratio: String)
+data class CourseAttendance(val title: String, val data: List<AttendanceItem>, val ratio: String) : java.io.Serializable
 
 internal fun parseAttendance(dom: Document): List<CourseAttendance> = dom.getElementsByClass("attendDiv").map { div ->
     CourseAttendance(
