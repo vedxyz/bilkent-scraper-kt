@@ -5,7 +5,7 @@ import kotlinx.serialization.Serializable
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 
-enum class TimeSlot(val representation: String) {
+enum class TimeSlot(val representation: String) : java.io.Serializable {
     H8("08:30 - 09:20"),
     H9("09:30 - 10:20"),
     H10("10:30 - 11:20"),
@@ -31,10 +31,10 @@ enum class TimeSlot(val representation: String) {
 }
 
 @Serializable
-data class DailyScheduleItem(val timeSlot: TimeSlot, val details: List<String>?)
+data class DailyScheduleItem(val timeSlot: TimeSlot, val details: List<String>?) : java.io.Serializable
 
 @Serializable
-data class DailySchedule(val timeSlots: List<DailyScheduleItem>)
+data class DailySchedule(val timeSlots: List<DailyScheduleItem>) : java.io.Serializable
 
 @Serializable
 data class WeeklySchedule(val days: List<DailySchedule>)

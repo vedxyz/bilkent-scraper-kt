@@ -10,13 +10,13 @@ import org.jsoup.nodes.Document
  * Represents a row on the grade table for a course.
  */
 @Serializable
-data class GradeItem(val title: String, val date: String, val grade: String, val comment: String)
+data class GradeItem(val title: String, val date: String, val grade: String, val comment: String) : java.io.Serializable
 
 /**
  * Represents a category of grades for a course.
  */
 @Serializable
-data class GradeCategory(val type: String) {
+data class GradeCategory(val type: String) : java.io.Serializable {
     @SerialName("items")
     private var _items: MutableList<GradeItem> = mutableListOf()
     val items: List<GradeItem> get() = _items.toList()

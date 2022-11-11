@@ -9,7 +9,7 @@ import org.jsoup.nodes.Document
  * Represents a row on the attendance table for a course.
  */
 @Serializable
-data class AttendanceItem(val title: String, val date: String, val attendance: String)
+data class AttendanceItem(val title: String, val date: String, val attendance: String) : java.io.Serializable
 
 /**
  * Represents the full attendance data for a course.
